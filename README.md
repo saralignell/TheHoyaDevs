@@ -1,5 +1,5 @@
 # TheHoyaDevs
-# The Hoya Devs - React Native & Express Server Integration
+# The Hoya Devs APP
 
 This project is designed to build a mobile app using **React Native** that fetches articles from a WordPress site via a secure **Express server**. The Express server is hosted on **Render.com** for testing purposes and will later be migrated to **AWS** for production use.
 
@@ -31,6 +31,7 @@ The **WordPress REST API** allows you to interact with your WordPress site from 
 ### Useful Resources
 - [**WordPress REST API - Basic Overview**](https://jetpack.com/blog/wordpress-rest-api/)
 - [**WordPress REST API Handbook**](https://developer.wordpress.org/rest-api/)
+- [**Wordpress Pest API key/notes](https://docs.google.com/document/d/1kN-1DNFeeYH2-D8vLbQRtNSeF4xOQ4TTOjPAF5UeQtY/edit?pli=1)
 
 ## Deployment
 
