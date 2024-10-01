@@ -31,7 +31,7 @@ The **WordPress REST API** allows you to interact with your WordPress site from 
 ### Useful Resources
 - [**WordPress REST API - Basic Overview**](https://jetpack.com/blog/wordpress-rest-api/)
 - [**WordPress REST API Handbook**](https://developer.wordpress.org/rest-api/)
-- [**Wordpress Pest API key/notes](https://docs.google.com/document/d/1kN-1DNFeeYH2-D8vLbQRtNSeF4xOQ4TTOjPAF5UeQtY/edit?pli=1)
+- [**Wordpress Pest API key/notes**](https://docs.google.com/document/d/1kN-1DNFeeYH2-D8vLbQRtNSeF4xOQ4TTOjPAF5UeQtY/edit?pli=1)
 
 ## Deployment
 
