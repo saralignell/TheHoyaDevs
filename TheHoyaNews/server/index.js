@@ -10,7 +10,7 @@ app.use(cors());
 // Endpoint to get articles from the WordPress API
 app.get('/getarticles', async (req, res) => {
   try {
-    const response = await axios.get('https://your-wordpress-site.com/wp-json/wp/v2/posts', {
+    const response = await axios.get('https://thehoya.com/wp-json/wp/v2/posts', {
       params: { per_page: 20 },
     });
     res.json(response.data);
