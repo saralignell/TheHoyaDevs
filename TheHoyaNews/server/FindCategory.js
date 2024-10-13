@@ -2,8 +2,10 @@ import axios from 'axios';
 import { writeFileSync } from 'fs'; 
 import { Parser } from 'json2csv';  
 
+import categories from './categories.json' assert { type: 'json' };
 
-export default async function fetchImage(mediaId) {
+
+async function fetchImage(mediaId) {
   try {
 
     const mediaResponse = await axios.get(`https://thehoya.com/wp-json/wp/v2/media/${mediaId}`);
@@ -19,12 +21,7 @@ async function fetchArticlesByCategory(categoryInput) {
   let categoryId;
 
 
-  const categories = [
-    { name: "Academics", id: 40929 },
-    { name: "Alum", id: 40930 },
-    { name: "Arts & Entertainment", id: 13169 }
-
-  ];
+  
 
 
   if (typeof categoryInput === 'number') {
