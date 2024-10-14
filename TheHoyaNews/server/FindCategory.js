@@ -4,10 +4,8 @@ import { Parser } from 'json2csv';
 
 import categories from './categories.json' assert { type: 'json' };
 
-
 async function fetchImage(mediaId) {
   try {
-
     const mediaResponse = await axios.get(`https://thehoya.com/wp-json/wp/v2/media/${mediaId}`);
     return mediaResponse.data.source_url; 
   } catch (error) {
@@ -16,32 +14,26 @@ async function fetchImage(mediaId) {
   }
 }
 
-
 async function fetchArticlesByCategory(categoryInput) {
-  let categoryId;
-
-
-  
-
+  let category;
 
   if (typeof categoryInput === 'number') {
-    categoryId = categoryInput;
+    category = categories.find(cat => cat.id === categoryInput);
   } else {
-    const category = categories.find(cat => cat.name.toLowerCase() === categoryInput.toLowerCase());
-    if (!category) {
-      throw new Error('Category not found');
-    }
-    categoryId = category.id;
+    category = categories.find(cat => cat.name.toLowerCase() === categoryInput.toLowerCase());
   }
 
+  if (!category) {
+    throw new Error('Category not found');
+  }
 
+  
   try {
-    const response = await axios.get(`https://thehoya.com/wp-json/wp/v2/posts`, {
-      params: { categories: categoryId, per_page: 10 }  
+    const response = await axios.get(category.posts_link, {
+      params: { per_page: 10 }  
     });
     const articles = response.data;
 
-  
     const articlesFormatted = await Promise.all(articles.map(async (article) => {
       const imageUrl = article.featured_media ? await fetchImage(article.featured_media) : '';
 
@@ -55,11 +47,9 @@ async function fetchArticlesByCategory(categoryInput) {
       };
     }));
 
-
-    const fields = ['id', 'date', 'title', 'link', 'content', 'image_url'];  
+    const fields = ['id', 'date', 'title', 'link', 'content', 'image_url']; 
     const json2csvParser = new Parser({ fields });
     const csv = json2csvParser.parse(articlesFormatted);
-
 
     writeFileSync('articles_with_images.csv', csv);
     console.log('CSV file created: articles_with_images.csv');
@@ -72,4 +62,4 @@ async function fetchArticlesByCategory(categoryInput) {
 }
 
 
-fetchArticlesByCategory('Academics'); 
+fetchArticlesByCategory('Academics');  
